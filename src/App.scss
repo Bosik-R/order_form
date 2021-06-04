@@ -1,12 +1,60 @@
-form {
+.root{
+	width: 100vw;
+	height: 100vh;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 50px 20px;
+	background-color: rgb(1, 3, 17);
 
-	input,
-	select {
-		margin-bottom: 20px;
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 50px 20px;
+		background-color: inherit;
+		border: 4px solid rgb(0, 233, 39);
+		border-radius: 10px;
+		color: #ffffff;
+		max-width: 600px;
+		width: 100%;
+
+		span {
+			width: 90%;
+			margin-bottom: 5px;
+		}
+
+		.optionWrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-start;
+		}
+
+		.emptyOption {
+			display: none;
+		}
+
+		input,
+		select {
+			margin-bottom: 20px;
+			font-size: 14px;
+			padding: 5px 0;
+			width: 90%;
+			text-align: right;
+		}
+
+		button {
+			width: 90%;
+			border-radius: 10px;
+			background-color: #2bff00;
+			color: #ffffff;
+			font-size: 20px;
+			letter-spacing: 1px;
+			padding: 10px 20px;
+			text-align: center;
+			border: none;
+			cursor: pointer;
+		}
 	}
 }

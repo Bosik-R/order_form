@@ -8,9 +8,10 @@ const products = [
 ];
 
 const App = () => {
-	const [data, setData] = useState({ name: '', preparation_time: '00:00:00' });
-	const [dish, setDish] = useState({ title: '' });
-	console.log(dish);
+  const baseData = { name: '', preparation_time: '00:00:00' };
+  const baseDish = { title: '' };
+	const [data, setData] = useState(baseData);
+	const [dish, setDish] = useState(baseDish);
 
 	const handleSelect = (e) => {
 		const selectedDish = products.filter(
@@ -22,17 +23,22 @@ const App = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setData({ ...data, ...dish });
-		console.log(data);
+    console.log(data);
+    setData(baseData);
+    setDish(baseDish);
 	};
+
 	return (
-		<div className='App'>
+		<div className='root'>
 			<form onSubmit={(e) => handleSubmit(e)}>
+        <span>Name :</span>
 				<input
 					type='text'
 					value={data.name}
 					onChange={(e) => setData({ ...data, name: e.target.value })}
 					placeholder={'product name'}
 				/>
+        <span>Preparation time :</span>
 				<input
 					type='time'
 					value={data.preparation_time}
@@ -40,34 +46,37 @@ const App = () => {
 						setData({ ...data, preparation_time: e.target.value })
 					}
 				/>
+        <span>select a dish :</span>
 				<select value={dish.title} onChange={(e) => handleSelect(e)}>
-					<option value='' className='emptyOpt'></option>
+					<option className='emptyOption'></option>
 					{products.map((product) => (
 						<option key={product.title} value={product.title} className='opt'>
 							{product.title}
 						</option>
 					))}
 				</select>
-				<button type='submit'>Submit</button>
 				{dish.title === 'Pizza' && (
-					<div className='optWrapper'>
+					<div className='optionWrapper'>
+            <span>slices :</span>
 						<input
 							type='number'
-							step='0.1'
 							value={dish.no_of_slices}
 							onChange={(e) =>
-								setData({ ...dish, no_of_slices: e.target.value })
+								setDish({ ...dish, no_of_slices: e.target.value })
 							}
 						/>
+            <span>diameter :</span>
 						<input
 							type='number'
 							value={dish.diameter}
+              step='0.1'
 							onChange={(e) => setDish({ ...dish, diameter: e.target.value })}
 						/>
 					</div>
 				)}
 				{dish.title === 'Soup' && (
-					<div className='optWrapper'>
+					<div className='optionWrapper'>
+            <span>Spiciness :</span>
 						<input
 							type='number'
 							value={dish.spiciness_scale}
@@ -77,6 +86,20 @@ const App = () => {
 						/>
 					</div>
 				)}
+        {dish.title === 'Sandwich' && (
+					<div className='optionWrapper'>
+            <span>Slices of bread :</span>
+						<input
+							type='number'
+							value={dish.slices_of_bread}
+							onChange={(e) =>
+								setDish({ ...dish, spiciness_scale: e.target.value })
+							}
+						/>
+					</div>
+				)}
+
+ 				<button type='submit'>Submit</button>
 			</form>
 		</div>
 	);
