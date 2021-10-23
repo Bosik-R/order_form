@@ -1,10 +1,18 @@
-# Getting Started with Create React App
+# React Order Form
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# project live preview : https://order-form.tomasz-rosik.pl/
 
-## Available Scripts
+This project uses React Final-Form (previously Redux-Form). 
+The inputs have simple validations and some of them are conditionally shown,
+after choosing an option from the select dropdown menu.
 
-In the project directory, you can run:
+## Feel free to play with this project. Simply: 
+
+1. clone the repository,
+2. open in your favorite code editor,
+3. in terminal type yarn install to install all dependencies
+4. the project was built with create-react-app and gives you the following scripts
+   that you can run from the project directory:
 
 ### `yarn start`
 
